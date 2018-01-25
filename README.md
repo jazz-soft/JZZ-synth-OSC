@@ -3,11 +3,11 @@ Fallback MIDI-Out implementation
 
 ## Install
 
-[**npm install jzz-input-kbd**](https://www.npmjs.com/package/jzz-input-kbd)
+[**npm install jzz-synth-osc**](https://www.npmjs.com/package/jzz-synth-osc)
 
-**bower install jzz-input-kbd**
+**bower install jzz-synth-osc**
 
-or get full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-input-Kbd)
+or get full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-synth-OSC)
 
 ## Usage
 
@@ -29,7 +29,12 @@ or get full development version and minified scripts from [**GitHub**](https://g
       // ...
     });
 
+##### //...
 
+    JZZ.synth.OSC().noteOn(0, 'C5', 127)
+         .wait(500).noteOn(0, 'E5', 127)
+         .wait(500).noteOn(0, 'G5', 127);
+         .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
 
 ## More information
 
