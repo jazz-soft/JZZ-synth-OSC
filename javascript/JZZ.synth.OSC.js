@@ -13,6 +13,8 @@
   if (!JZZ) return;
   if (!JZZ.synth) JZZ.synth = {};
 
+  var _version = '1.0.0';
+
   var _ac = JZZ.lib.getAudioContext();
 
   function Synth() {
@@ -105,7 +107,7 @@
       type: 'Web Audo',
       name: name,
       manufacturer: 'virtual',
-      version: '0.4'
+      version: _version
     };
   };
 
