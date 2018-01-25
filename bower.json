@@ -18,8 +18,11 @@
     "webmidiapi",
     "web-midi",
     "web-midi-api",
-    "piano",
-    "keyboard"
+    "webaudio",
+    "webaudioapi",
+    "web-audio",
+    "web-audio-api",
+    "synth"
   ],
   "homepage": "https://github.com/jazz-soft/JZZ-synth-OSC",
   "ignore": [

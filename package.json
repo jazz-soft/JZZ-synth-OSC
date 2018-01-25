@@ -10,8 +10,11 @@
     "webmidiapi",
     "web-midi",
     "web-midi-api",
-    "piano",
-    "keyboard"
+    "webaudio",
+    "webaudioapi",
+    "web-audio",
+    "web-audio-api",
+    "synth"
   ],
   "author": "jazz-soft (http://jazz-soft.net/)",
   "dependencies": {
