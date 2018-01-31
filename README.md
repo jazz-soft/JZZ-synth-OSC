@@ -4,7 +4,8 @@ Fallback MIDI-Out implementation
 ## Install
 
 [**npm install jzz-synth-osc**](https://www.npmjs.com/package/jzz-synth-osc)  
-**bower install jzz-synth-osc**  
+or **bower install jzz-synth-osc**  
+or **yarn add jzz-synth-osc**  
 or get full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-synth-OSC)
 
 ## Usage
