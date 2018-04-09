@@ -16,6 +16,12 @@ or get the full development version and minified scripts from [**GitHub**](https
     <script src="JZZ.synth.OSC.js"></script>
     //...
 
+##### CDN (always the latest version!)
+
+    <script src="https://cdn.jsdelivr.net/npm/jzz"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jzz-synth-osc"></script>
+    //...
+
 ##### CommonJS
 
     var JZZ = require('jzz');

@@ -1,6 +1,6 @@
 {
   "name": "jzz-synth-osc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fallback MIDI-Out implementation",
   "main": "javascript/JZZ.synth.OSC.js",
   "keywords": [
