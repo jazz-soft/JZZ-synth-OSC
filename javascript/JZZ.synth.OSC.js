@@ -12,8 +12,9 @@
 
   if (!JZZ) return;
   if (!JZZ.synth) JZZ.synth = {};
+  if (JZZ.synth.OSC) return;
 
-  var _version = '1.0.2';
+  var _version = '1.0.3';
 
   var _ac = JZZ.lib.getAudioContext();
 
