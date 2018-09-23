@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.0.4';
+  var _version = '1.0.6';
 
   var _ac = JZZ.lib.getAudioContext();
 
@@ -161,5 +161,7 @@
   JZZ.synth.OSC.register = function(name) {
     return _ac ? JZZ.lib.registerMidiOut(name, _engine) : false;
   };
+
+  JZZ.synth.OSC.version = function() { return _version; };
 
 });

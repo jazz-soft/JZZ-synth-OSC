@@ -1,11 +1,15 @@
 # JZZ-synth-OSC
-Fallback MIDI-Out implementation
+A simple MIDI-Out implementation for the systems that don't have better options
+
+[![npm](https://img.shields.io/npm/v/jzz-synth-osc.svg)](https://www.npmjs.com/package/jzz-synth-osc)
+[![npm](https://img.shields.io/npm/dt/jzz-synth-osc.svg)](https://www.npmjs.com/package/jzz-synth-osc)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/jzz-synth-osc/badge)](https://www.jsdelivr.com/package/npm/jzz-synth-osc)
 
 ## Install
 
-[**npm install jzz-synth-osc**](https://www.npmjs.com/package/jzz-synth-osc)  
-or **bower install jzz-synth-osc**  
-or **yarn add jzz-synth-osc**  
+`npm install jzz-synth-osc`  
+or `bower install jzz-synth-osc`  
+or `yarn add jzz-synth-osc`  
 or get the full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-synth-OSC)
 
 ## Usage
