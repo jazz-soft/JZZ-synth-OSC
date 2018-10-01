@@ -14,15 +14,16 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.0.6';
+  var _version = '1.0.7';
 
   var _ac = JZZ.lib.getAudioContext();
 
   function Synth() {
+    this.dest = _ac.destination;
     this.channels = [];
     this.channel = function(c) {
       if (!this.channels[c]) {
-        this.channels[c] = new Channel();
+        this.channels[c] = new Channel(this);
         if (c == 9) this.channels[c].note = function(n) {
           if (!this.notes[n]) this.notes[n] = new Perc(n, this);
           return this.notes[n];
@@ -44,9 +45,11 @@
         else if (n == 0x40) this.channel(c).damper(!!v);
       }
     };
+    this.plug = function(dest) { this.dest = dest ? dest : _ac.destination; };
   }
 
-  function Channel() {
+  function Channel(synth) {
+    this.synth = synth;
     this.notes = [];
     this.sustain = false;
     this.note = function(n) {
@@ -99,7 +102,7 @@
       this.gain.gain.exponentialRampToValueAtTime(0.01*ampl, now + releaseTime);
 
       this.oscillator.connect(this.gain);
-      this.gain.connect(_ac.destination);
+      this.gain.connect(this.channel.synth.dest);
 
       this.oscillator.start(0);
     };
@@ -126,7 +129,7 @@
       this.gain.gain.setValueAtTime(ampl, now);
 
       this.oscillator.connect(this.gain);
-      this.gain.connect(_ac.destination);
+      this.gain.connect(this.channel.synth.dest);
 
       this.oscillator.start(0);
       this.oscillator.stop(_ac.currentTime + 0.04);
@@ -149,6 +152,7 @@
   _engine._openOut = function(port, name) {
     if (!_ac) { port._crash('AudioContext not supported'); return;}
     if (!_synth[name]) _synth[name] = new Synth();
+    port.plug = function(dest) { _synth[name].plug(dest); };
     port._info = _engine._info(name);
     port._receive = function(msg) { _synth[name].play(msg); };
     port._resume();
