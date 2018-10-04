@@ -19,7 +19,8 @@
   var _ac = JZZ.lib.getAudioContext();
 
   function Synth() {
-    this.dest = _ac.destination;
+    this.ac = _ac;
+    this.dest = this.ac.destination;
     this.channels = [];
     this.channel = function(c) {
       if (!this.channels[c]) {
@@ -45,7 +46,22 @@
         else if (n == 0x40) this.channel(c).damper(!!v);
       }
     };
-    this.plug = function(dest) { this.dest = dest ? dest : _ac.destination; };
+    this.plug = function(dest) {
+      try {
+        this.ac = undefined;
+        if (dest.context instanceof AudioContext) {
+          this.ac = dest.context;
+          this.dest = dest;
+        }
+      }
+      catch (e) {
+        this.ac = undefined;
+      }
+      if (!this.ac) {
+        this.ac = _ac;
+        this.dest = this.ac.destination;
+      }
+    };
   }
 
   function Channel(synth) {
@@ -89,15 +105,15 @@
         return;
       }
       var ampl = v/127;
-      this.oscillator = _ac.createOscillator();
+      this.oscillator = this.channel.synth.ac.createOscillator();
       this.oscillator.type = 'sawtooth';
-      this.oscillator.frequency.setTargetAtTime(this.freq, _ac.currentTime, 0.005);
+      this.oscillator.frequency.setTargetAtTime(this.freq, this.channel.synth.ac.currentTime, 0.005);
       if (!this.oscillator.start) this.oscillator.start = this.oscillator.noteOn;
       if (!this.oscillator.stop) this.oscillator.stop = this.oscillator.noteOff;
 
-      this.gain = _ac.createGain();
+      this.gain = this.channel.synth.ac.createGain();
       var releaseTime = 2;
-      var now = _ac.currentTime;
+      var now = this.channel.synth.ac.currentTime;
       this.gain.gain.setValueAtTime(ampl, now);
       this.gain.gain.exponentialRampToValueAtTime(0.01*ampl, now + releaseTime);
 
@@ -117,22 +133,22 @@
       if (!v) return;
 
       var ampl = v/127;
-      this.oscillator = _ac.createOscillator();
+      this.oscillator = this.channel.synth.ac.createOscillator();
       this.oscillator.type = 'sine';
-      this.oscillator.frequency.setTargetAtTime(this.freq, _ac.currentTime, 0.005);
+      this.oscillator.frequency.setTargetAtTime(this.freq, this.channel.synth.ac.currentTime, 0.005);
       if (!this.oscillator.start) this.oscillator.start = this.oscillator.noteOn;
       if (!this.oscillator.stop) this.oscillator.stop = this.oscillator.noteOff;
 
-      this.gain = _ac.createGain();
+      this.gain = this.channel.synth.ac.createGain();
       var releaseTime = 2;
-      var now = _ac.currentTime;
+      var now = this.channel.synth.ac.currentTime;
       this.gain.gain.setValueAtTime(ampl, now);
 
       this.oscillator.connect(this.gain);
       this.gain.connect(this.channel.synth.dest);
 
       this.oscillator.start(0);
-      this.oscillator.stop(_ac.currentTime + 0.04);
+      this.oscillator.stop(this.channel.synth.ac.currentTime + 0.04);
     };
   }
 
