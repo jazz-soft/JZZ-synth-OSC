@@ -14,7 +14,7 @@
   if (!JZZ.synth) JZZ.synth = {};
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.0.7';
+  var _version = '1.0.8';
 
   var _ac = JZZ.lib.getAudioContext();
 
@@ -49,7 +49,7 @@
     this.plug = function(dest) {
       try {
         this.ac = undefined;
-        if (dest.context instanceof AudioContext) {
+        if (dest.context instanceof AudioContext || dest.context instanceof webkitAudioContext) {
           this.ac = dest.context;
           this.dest = dest;
         }
@@ -153,6 +153,7 @@
   }
 
   var _synth = {};
+  var _noname = [];
   var _engine = {};
 
   _engine._info = function(name) {
@@ -166,11 +167,20 @@
   };
 
   _engine._openOut = function(port, name) {
-    if (!_ac) { port._crash('AudioContext not supported'); return;}
-    if (!_synth[name]) _synth[name] = new Synth();
-    port.plug = function(dest) { _synth[name].plug(dest); };
+    if (!_ac) { port._crash('AudioContext not supported'); return; }
+    var synth;
+    if (typeof name !== 'undefined') {
+      name = '' + name;
+      if (!_synth[name]) _synth[name] = new Synth();
+      synth = _synth[name];
+    }
+    else {
+      synth = new Synth();
+      _noname.push(synth);
+    }
+    port.plug = function(dest) { synth.plug(dest); };
     port._info = _engine._info(name);
-    port._receive = function(msg) { _synth[name].play(msg); };
+    port._receive = function(msg) { synth.play(msg); };
     port._resume();
   };
 
