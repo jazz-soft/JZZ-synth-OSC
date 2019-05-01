@@ -12,12 +12,8 @@
   ],
   "license": "MIT",
   "keywords": [
-    "MIDI",
     "midi",
-    "webmidi",
-    "webmidiapi",
-    "web-midi",
-    "web-midi-api",
+    "midi-synth",
     "webaudio",
     "webaudioapi",
     "web-audio",
