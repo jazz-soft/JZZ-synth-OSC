@@ -1,5 +1,8 @@
 # JZZ-synth-OSC
-A simple MIDI-Out implementation for the systems that don't have better options
+A simple MIDI-Out implementation for the systems with no better option available.  
+Mainly, for use as template for your own JZZ-compatible synths.  
+For real world applications,
+please consider using [JZZ-synth-Tiny](https://www.npmjs.com/package/jzz-synth-tiny) instead.
 
 [![npm](https://img.shields.io/npm/v/jzz-synth-osc.svg)](https://www.npmjs.com/package/jzz-synth-osc)
 [![npm](https://img.shields.io/npm/dt/jzz-synth-osc.svg)](https://www.npmjs.com/package/jzz-synth-osc)
@@ -16,34 +19,52 @@ or get the full development version and minified scripts from [**GitHub**](https
 
 ##### Plain HTML
 
-    <script src="JZZ.js"></script>
-    <script src="JZZ.synth.OSC.js"></script>
-    //...
+```html
+<script src="JZZ.js"></script>
+<script src="JZZ.synth.OSC.js"></script>
+//...
+```
 
-##### CDN (always the latest version!)
+##### CDN (jsdelivr)
 
-    <script src="https://cdn.jsdelivr.net/npm/jzz"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jzz-synth-osc"></script>
-    //...
+```html
+<script src="https://cdn.jsdelivr.net/npm/jzz"></script>
+<script src="https://cdn.jsdelivr.net/npm/jzz-synth-osc"></script>
+//...
+```
+
+##### CDN (unpkg)
+
+```html
+<script src="https://unpkg.com/jzz"></script>
+<script src="https://unpkg.com/jzz-synth-osc"></script>
+//...
+```
 
 ##### CommonJS
 
-    var JZZ = require('jzz');
-    require('jzz-synth-osc')(JZZ);
-    //...
+```js
+var JZZ = require('jzz');
+require('jzz-synth-osc')(JZZ);
+//...
+```
 
 ##### AMD
 
-    require(['JZZ', 'JZZ.synth.OSC'], function(JZZ, dummy) {
-      // ...
-    });
+```js
+require(['JZZ', 'JZZ.synth.OSC'], function(JZZ, dummy) {
+  // ...
+});
+```
 
 ##### //...
 
-    JZZ.synth.OSC().noteOn(0, 'C5', 127)
-         .wait(500).noteOn(0, 'E5', 127)
-         .wait(500).noteOn(0, 'G5', 127);
-         .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+```js
+JZZ.synth.OSC().noteOn(0, 'C5', 127)
+     .wait(500).noteOn(0, 'E5', 127)
+     .wait(500).noteOn(0, 'G5', 127);
+     .wait(500).noteOff(0, 'C5').noteOff(0, 'E5').noteOff(0, 'G5');
+```
 
 ## More information
 
