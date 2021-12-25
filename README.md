@@ -11,7 +11,6 @@ please consider using [JZZ-synth-Tiny](https://www.npmjs.com/package/jzz-synth-t
 ## Install
 
 `npm install jzz-synth-osc`  
-or `bower install jzz-synth-osc`  
 or `yarn add jzz-synth-osc`  
 or get the full development version and minified scripts from [**GitHub**](https://github.com/jazz-soft/JZZ-synth-OSC)
 
