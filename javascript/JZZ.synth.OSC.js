@@ -140,7 +140,6 @@
       if (!this.oscillator.stop) this.oscillator.stop = this.oscillator.noteOff;
 
       this.gain = this.channel.synth.ac.createGain();
-      var releaseTime = 2;
       var now = this.channel.synth.ac.currentTime;
       this.gain.gain.setValueAtTime(ampl, now);
 
