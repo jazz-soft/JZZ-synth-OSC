@@ -4,6 +4,7 @@
   "description": "Fallback MIDI-Out implementation",
   "main": "javascript/JZZ.synth.OSC.js",
   "scripts": {
+    "test": "mocha test/mocha.js",
     "lint": "eslint javascript"
   },
   "keywords": [
@@ -23,7 +24,8 @@
     "eslint": "^8.13.0",
     "grunt": "^1.5.2",
     "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-uglify": "^5.2.1"
+    "grunt-contrib-uglify": "^5.2.1",
+    "mocha": "^9.2.2"
   },
   "repository": {
     "type": "git",
