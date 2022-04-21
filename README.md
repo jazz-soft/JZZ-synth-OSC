@@ -7,6 +7,7 @@ please consider using [JZZ-synth-Tiny](https://www.npmjs.com/package/jzz-synth-t
 [![npm](https://img.shields.io/npm/v/jzz-synth-osc.svg)](https://www.npmjs.com/package/jzz-synth-osc)
 [![npm](https://img.shields.io/npm/dt/jzz-synth-osc.svg)](https://www.npmjs.com/package/jzz-synth-osc)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/jzz-synth-osc/badge)](https://www.jsdelivr.com/package/npm/jzz-synth-osc)
+[![build](https://github.com/jazz-soft/JZZ-synth-OSC/actions/workflows/build.yml/badge.svg)](https://github.com/jazz-soft/JZZ-synth-OSC/actions)
 
 ## Install
 
