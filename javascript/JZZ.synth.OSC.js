@@ -1,4 +1,5 @@
 (function(global, factory) {
+  /* istanbul ignore next */
   if (typeof exports === 'object' && typeof module !== 'undefined') {
     module.exports = factory;
   }
@@ -10,13 +11,20 @@
   }
 })(this, function(JZZ) {
 
+  /* istanbul ignore next */
   if (!JZZ) return;
+  /* istanbul ignore next */
   if (!JZZ.synth) JZZ.synth = {};
+  /* istanbul ignore next */
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.1.9';
+  var _version = '1.2.0';
 
-  var _ac = JZZ.lib.getAudioContext();
+  var _ac;
+  function initAC() {
+    if (!_ac) _ac = JZZ.lib.getAudioContext();
+    return !!_ac;
+  }
 
   function Synth() {
     this.ac = _ac;
@@ -36,6 +44,7 @@
       var b = arr[0];
       var n = arr[1];
       var v = arr[2];
+      /* istanbul ignore next */
       if (b < 0 || b > 255) return;
       var c = b & 15;
       var s = b >> 4;
@@ -108,7 +117,9 @@
       this.oscillator = this.channel.synth.ac.createOscillator();
       this.oscillator.type = 'sawtooth';
       this.oscillator.frequency.setTargetAtTime(this.freq, this.channel.synth.ac.currentTime, 0.005);
+      /* istanbul ignore next */
       if (!this.oscillator.start) this.oscillator.start = this.oscillator.noteOn;
+      /* istanbul ignore next */
       if (!this.oscillator.stop) this.oscillator.stop = this.oscillator.noteOff;
 
       this.gain = this.channel.synth.ac.createGain();
@@ -136,7 +147,9 @@
       this.oscillator = this.channel.synth.ac.createOscillator();
       this.oscillator.type = 'sine';
       this.oscillator.frequency.setTargetAtTime(this.freq, this.channel.synth.ac.currentTime, 0.005);
+      /* istanbul ignore next */
       if (!this.oscillator.start) this.oscillator.start = this.oscillator.noteOn;
+      /* istanbul ignore next */
       if (!this.oscillator.stop) this.oscillator.stop = this.oscillator.noteOff;
 
       this.gain = this.channel.synth.ac.createGain();
@@ -166,7 +179,12 @@
   };
 
   _engine._openOut = function(port, name) {
-    if (!_ac) { port._crash('AudioContext not supported'); return; }
+    initAC();
+    /* istanbul ignore next */
+    if (!_ac) {
+      port._crash('AudioContext not supported');
+      return;
+    }
     var synth;
     if (typeof name !== 'undefined') {
       name = '' + name;
@@ -188,7 +206,7 @@
   };
 
   JZZ.synth.OSC.register = function(name) {
-    return _ac ? JZZ.lib.registerMidiOut(name, _engine) : false;
+    return initAC() ? JZZ.lib.registerMidiOut(name, _engine) : false;
   };
 
   JZZ.synth.OSC.version = function() { return _version; };
