@@ -1,8 +1,10 @@
 const assert = require('assert');
+const WAT = require('web-audio-test');
 const JZZ = require('jzz');
 const version = require('../package.json').version;
-global.window = require('web-audio-test');
 require('..')(JZZ);
+
+global.window = WAT;
 
 describe('register', function() {
   it('register', function() {
@@ -29,9 +31,12 @@ describe('web-audio', function() {
   });
   it('plug', function() {
     JZZ.synth.OSC.register('synth');
+    global.AudioContext = WAT.AudioContext;
+    global.webkitAudioContext = WAT.AudioContext;
     synth = JZZ().openMidiOut('synth');
     synth = JZZ().openMidiOut('synth');
     synth.plug();
+    synth.plug({ context: 'dummy' });
     synth.plug({ context: JZZ.lib.getAudioContext() });
   });
 });
