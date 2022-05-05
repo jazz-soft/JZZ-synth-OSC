@@ -1,6 +1,6 @@
 # JZZ-synth-OSC
 A simple MIDI-Out implementation for the systems with no better option available.  
-Mainly, for use as template for your own JZZ-compatible synths.  
+Mainly, for use as a template for your own JZZ-compatible synths.  
 For real world applications,
 please consider using [JZZ-synth-Tiny](https://www.npmjs.com/package/jzz-synth-tiny) instead.
 

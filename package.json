@@ -28,7 +28,7 @@
     "grunt-contrib-uglify": "^5.2.1",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
-    "web-audio-test": "^0.0.1"
+    "web-audio-test": "^0.0.2"
   },
   "repository": {
     "type": "git",
