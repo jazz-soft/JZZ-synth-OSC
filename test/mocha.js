@@ -18,7 +18,14 @@ describe('register', function() {
 
 describe('web-audio', function() {
   it('create', function() {
-    synth = JZZ.synth.OSC();
+    var synth = JZZ.synth.OSC();
+    var info = synth.info();
+    assert.equal(info.type, 'Web Audio');
+    assert.equal(info.name, 'JZZ.synth.OSC');
+    assert.equal(info.manufacturer, 'virtual');
+    assert.equal(info.version, version);
+    assert.equal(info.engine, 'none');
+    assert.equal(info.sysex, true);
     synth.program(0, 1);
     synth.noteOn(0, 'C5', 127);
     synth.noteOff(0, 'C5');
@@ -33,7 +40,7 @@ describe('web-audio', function() {
     JZZ.synth.OSC.register('synth');
     global.AudioContext = WAT.AudioContext;
     global.webkitAudioContext = WAT.AudioContext;
-    synth = JZZ().openMidiOut('synth');
+    var synth = JZZ().openMidiOut('synth');
     synth = JZZ().openMidiOut('synth');
     synth.plug();
     synth.plug({ context: 'dummy' });

@@ -18,7 +18,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.2.0';
+  var _version = '1.2.1';
 
   var _ac;
   function initAC() {
@@ -171,7 +171,7 @@
   _engine._info = function(name) {
     if (!name) name = 'JZZ.synth.OSC';
     return {
-      type: 'Web Audo',
+      type: 'Web Audio',
       name: name,
       manufacturer: 'virtual',
       version: _version
