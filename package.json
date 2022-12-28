@@ -1,6 +1,6 @@
 {
   "name": "jzz-synth-osc",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Fallback MIDI-Out implementation",
   "main": "javascript/JZZ.synth.OSC.js",
   "scripts": {
@@ -19,16 +19,16 @@
   ],
   "author": "jazz-soft (https://jazz-soft.net/)",
   "dependencies": {
-    "jzz": "^1.5.1"
+    "jzz": "^1.5.6"
   },
   "devDependencies": {
-    "eslint": "^8.15.0",
-    "grunt": "^1.5.2",
+    "eslint": "^8.30.0",
+    "grunt": "^1.5.3",
     "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-uglify": "^5.2.1",
-    "mocha": "^10.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "web-audio-test": "^0.0.2"
+    "web-audio-test": "^0.0.5"
   },
   "repository": {
     "type": "git",
