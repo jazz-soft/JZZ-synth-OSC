@@ -1,6 +1,7 @@
 (function(global, factory) {
   /* istanbul ignore next */
   if (typeof exports === 'object' && typeof module !== 'undefined') {
+    factory.OSC = factory;
     module.exports = factory;
   }
   else if (typeof define === 'function' && define.amd) {
@@ -18,7 +19,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.2.2';
+  var _version = '1.2.3';
 
   var _ac;
   function initAC() {

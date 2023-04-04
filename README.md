@@ -50,6 +50,15 @@ require('jzz-synth-osc')(JZZ);
 //...
 ```
 
+##### TypeScript / ES6
+
+```ts
+import { JZZ } from 'jzz';
+import { OSC } from 'jzz-synth-osc';
+OSC(JZZ);
+//...
+```
+
 ##### AMD
 
 ```js
