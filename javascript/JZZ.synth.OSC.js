@@ -19,7 +19,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.2.4';
+  var _version = '1.2.5';
 
   var _ac;
   function initAC() {
