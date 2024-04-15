@@ -91,7 +91,7 @@ JZZ.synth.OSC()
   .note(0, 'E5', 127, 500).wait(500)
   .note(0, 'G5', 127, 500).wait(500)
   .note(9, 'C6', 127, 500).wait(500)
-  .and(function() { process.exit(); });
+  .and(function() { JZZ.lib.closeAudioContext(); });
 ```
 
 ## More information
