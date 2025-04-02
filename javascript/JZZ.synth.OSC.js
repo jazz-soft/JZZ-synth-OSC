@@ -19,7 +19,7 @@
   /* istanbul ignore next */
   if (JZZ.synth.OSC) return;
 
-  var _version = '1.2.7';
+  var _version = '1.2.8';
 
   var _ac;
   function initAC() {
@@ -59,7 +59,7 @@
     this.plug = function(dest) {
       try {
         this.ac = undefined;
-        if (dest.context instanceof AudioContext || dest.context instanceof webkitAudioContext) {
+        if (dest.context instanceof AudioContext) {
           this.ac = dest.context;
           this.dest = dest;
         }
@@ -106,7 +106,7 @@
         this.oscillator = undefined;
         this.sustain = false;
       }
-      catch (e) {}
+      catch (e) {/**/}
     };
     this.play = function(v) {
       if (v || !this.channel.sustain) this.stop();
